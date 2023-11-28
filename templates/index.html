@@ -1,0 +1,55 @@
+<!-- templates/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='style.css') }}"
+    />
+    <title>{{title}}</title>
+  </head>
+  <body>
+    <h1>Xử lý ảnh</h1>
+    <p class="font-large">Họ tên: <strong>Bùi Thanh Sơn</strong></p>
+    <p class="font-large">Mã sinh viên: <strong>B20DCCN573</strong></p>
+    <p class="font-large">Github: <a href="https://github.com/kuroshiro1902" style="text-decoration: underline;">https://github.com/kuroshiro1902</a></p>
+    <div class="main">
+      <nav>
+        <ul>
+            <li><a href="{{ url_for('grayscale') }}">Lọc xám</a></li>
+            <li><a href="{{ url_for('negative') }}">Lọc âm bản</a></li>
+          <li><a href="{{ url_for('mean_filtering') }}">Lọc trung bình</a></li>
+          <li><a href="{{ url_for('median_filtering') }}">Lọc trung vị</a></li>
+          <li><a href="{{ url_for('gaussian') }}">Thuật toán Gaussian</a></li>
+          <li><a href="{{ url_for('laplacian') }}">Thuật toán Laplacian</a></li>
+          <li><a href="{{ url_for('prewitt') }}">Thuật toán Prewitt</a></li>
+          <li><a href="{{ url_for('threshold') }}">Thuật toán Threshold</a></li>
+        </ul>
+      </nav>
+      <div class="flex flex-column">
+        <h1 class="mb-4 text-center title">{{title}}</h1>
+        <div class="flex gap-4">
+          <div >
+            <h3>Ảnh cũ:</h3>
+            <img src="{{defaultImg}}" />
+          </div>
+          <div>
+            <h3>Ảnh mới:</h3>
+            <img
+              src="data:image/png;base64,{{ img_data }}"
+              alt="Processed Image"
+            />
+          </div>
+          <div class="mt-4" style="font-size: 16px;">
+            <p>Thuật toán: <strong>{{algorithm}}</strong></p>
+            <p style="font-size: 12px; line-height: 1.4;">{{purpose}}</p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
